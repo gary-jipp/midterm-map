@@ -50,7 +50,13 @@ app.use('/api/favs', favApiRoutes);
 app.use('/favs', favRoutes);
 app.use('/locs',locRoutes);
 app.use ('/api/locs',locApiRoutes);
+<<<<<<< HEAD
 
+=======
+app.use ('/create', mapsApiRoutes)
+
+//app.use ('/locs',locApiRoutes);
+>>>>>>> 5895149fdbf7defdf83e71f69b9b18dc477c63b3
 
 
 // Note: mount other resources here, using the same pattern above

@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script async defer
+  <script async
     src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=initMap">
   </script>
   <script defer src="/scripts/maps.js"></script>
@@ -38,10 +38,23 @@
     }
 
     .map {
+<<<<<<< HEAD
       height: 250px;
       width: 250px;
       margin: 20px;
 
+=======
+      height: 300px;
+      width: 100%;
+      margin: 30px;
+    }
+
+    .each-map-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+>>>>>>> 5895149fdbf7defdf83e71f69b9b18dc477c63b3
     }
 
   </style>
