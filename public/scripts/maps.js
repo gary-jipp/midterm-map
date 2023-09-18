@@ -30,8 +30,11 @@ $(() => {
     for (const map of response.maps) {
       // Create a new map container with a unique ID based on the map's ID.
       const mapId = `map-${map.id}`;
+<<<<<<< HEAD
 
       console.log(response.maps);
+=======
+>>>>>>> ae10768ab90e83a4249800d96e99d891eaeab253
 
       const eachMapContainer = $(`
       <div class="each-map-container">
