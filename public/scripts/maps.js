@@ -2,41 +2,41 @@
 
 // Initializes the google map API and displays it in the div container
 function initMap(location, mapId) {
-
   const map = new google.maps.Map(document.getElementById(mapId), {
     zoom: 7,
-    center: location
+    center: location,
   });
 
   const marker = new google.maps.Marker({
     position: location,
-    map: map
+    map: map,
   });
-};
+}
 
-
- // This code runs when the DOM is ready
+// This code runs when the DOM is ready
 $(() => {
-
-  const $mapsContainer = $('#maps-container');
+  const $mapsContainer = $("#maps-container");
 
   // Make an AJAX (asynchronous) GET request to the '/api/maps' endpoint on the server.
   $.ajax({
-    method: 'GET',
-    url: '/api/maps'
-  })
-  .done((response) => {
+    method: "GET",
+    url: "/api/maps",
+  }).done((response) => {
     // When the AJAX request is successful, this callback function is executed.
 
-    $mapsContainer.empty();  // Empty the content of the 'maps-container' div.
+    $mapsContainer.empty(); // Empty the content of the 'maps-container' div.
 
     // Loop through the array of available maps in the response and create a map for each.
     for (const map of response.maps) {
-
       // Create a new map container with a unique ID based on the map's ID.
-      const mapId = `map-${map.id}`
+      const mapId = `map-${map.id}`;
 
-      const eachMapContainer = $(`<div id="${mapId}" class="map"></div><a href="/api/locs/${map.id}"> View map </a>`);
+      const eachMapContainer = $(`
+      <div class="each-map-container">
+        <div id="${mapId}" class="map">
+        </div>
+        <a href="/locs/${map.id}"> ${map.location_title} </a>
+      </div>`);
 
       // Append the each map's container to the 'maps-container' div.
       $($mapsContainer).append(eachMapContainer);
@@ -48,8 +48,4 @@ $(() => {
       initMap(location, mapId);
     }
   });
-
- });
-
-
-
+});
