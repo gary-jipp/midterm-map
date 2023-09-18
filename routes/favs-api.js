@@ -7,6 +7,7 @@ const favQueries = require('../db/queries/favs');
 router.get('/', (req, res) => {
   favQueries.getFavourites()
     .then((favourites) => {
+      console.log("This is the favourites page!");
       res.json({ favourites });
   })
 
