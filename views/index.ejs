@@ -17,8 +17,9 @@
 
     <script src="/vendor/jquery-3.0.0.js"></script>
     <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=console.debug"> -->
-    <script async
+    <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTlH2zUp3AWtcEogHcP0Y28fjxX_2Gv0k&callback=console.debug"></script>
+
     <script defer src="/scripts/app.js"></script>
     <!-- <script src="/scripts/create-map.js"></script>" -->
     <!-- <script defer src="/scripts/maps.js"></script> -->
@@ -38,11 +39,14 @@
 
       }
 
-      #maps-container {
+      #map-container {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         padding-right: 40px;
+        border: 2px blue;
+        height: 30em;
+        width: 30em;
       }
 
       #map-screen {
@@ -74,19 +78,18 @@
 
     </header>
 
-    <!-- THE map goes here.  1 Map only.   -->
-    <div id="map-screen">
-      <div id="map-container" />
-    </div>
-
-    <div class="create-map-form hidden" style="height: 400px">
+    <div class="create-map-form hidden">
       <form>
-        //add input and button etc
         <input />
         <button type="submit" class="create-map-button" id="create-map">Create Map</button>
       </form>
       <button type="click" id="reset" class="map-reset-button">Reset</button>
     </div>
+
+    <!-- THE map goes here.  1 Map only.   -->
+    <button class="reset-map-button">Reset Map</button>
+    <div id="map-container"></div>
+    <div id="saved-maps-container" />
   </body>
 
 </html>

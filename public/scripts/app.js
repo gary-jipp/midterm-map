@@ -6,13 +6,15 @@
 //make a function called loadmap() , call in doc.ready()
 
 $(() => {
-  $('.new-map').on('click', showCreateMapForm);
-
-  const container = $('#map-container');
+  const container = $('#map-container')[0];
+  console.log(container);
   const map = new google.maps.Map(container, {center: {lat: 0, lng: 0}, zoom: 10});
   resetMap(map);
 
-  loadSavedMaps();
+
+  $('.new-map-button').on('click', showCreateMapForm);
+  $('.reset-map-button').on('click', () => resetMap(map));
+  // loadSavedMaps();
 });
 
 const resetMap = function(map) {
@@ -24,6 +26,7 @@ const resetMap = function(map) {
     const long = position.coords.longitude;
     const center = {lat: lat, lng: long};
     map.setCenter(center);
+    map.setZoom(10);
   });
 
   return map;
