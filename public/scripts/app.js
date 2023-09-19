@@ -6,75 +6,55 @@
 //make a function called loadmap() , call in doc.ready()
 
 $(() => {
-  //call loadmaps()
-  console.log(Start)
   $('.new-map').on('click', showCreateMapForm);
 
-  //put everything here
-  //function calls
+  const container = $('#map-container');
+  const map = new google.maps.Map(container, {center: {lat: 0, lng: 0}, zoom: 10});
+  resetMap(map);
 
-
-//make load functios instead of below
-  // $.get("/maps").then((res) => {
-  //   console.log(res);
-  //   createMap(); //refers to this function on this page, not the query page, confusing change it
-  //   //google api here?
-  //   //call create map here?
-  //   //jquery load div into body
-  //   //
-  // });
-
-  console.log("test");
-
-  //define createmap function
-
-  //rename to rendermaps()
-  const createMap = function () {
-    const $aMap = $(`
-    <div>
-      This is a map div. Eventually a map will go here.
-    </div>`);
-
-    return $aMap;
-  };
-
-  const renderMaps = function (placeholder) {
-    let $aMap = createMap(); //rename it to createMapElement()
-    $(".map-container").append($aMap);
-  };
-
-  renderMaps(); // call it inside the loadMap()
+  loadSavedMaps();
 });
 
-const showCreateMapForm = function(){
+const resetMap = function(map) {
+  // const map = new google.maps.Map(container, {zoom: 5})
+
+  //find current location
+  navigator.geolocation.getCurrentPosition(position => {
+    const lat = position.coords.latitude;
+    const long = position.coords.longitude;
+    const center = {lat: lat, lng: long};
+    map.setCenter(center);
+  });
+
+  return map;
+};
+
+const showCreateMapForm = function() {
   // alert("showing the form")
-  $('.create-map-form').removeClass("hidden")
+  $('.create-map-form').removeClass("hidden");
 
-}
+};
 
 
+const loadSavedMaps = function() {
+  $.get("/api/maps")
+    .then((data) => {
+      renderSavedMaps(data);
+    });
+};
 
-// const loadMaps = function(){
+const renderSavedMaps = function(placeholder) {
+  // Should be for map of maps here!!
+  // Maps is an array!  saved maps
+  let $aMap = createSavedMapElement(); //rename it to createMapElement()
+  $(".saved-maps-container").append($aMap);
+};
 
-//   $ajax({
-//     url: '/index.ejs',
-//     succes: () => {
-//       renderMaps()
-//     }
-//   })
-// }
+const createSavedMapElement = function() {
+  const $aMap = $(`
+  <div>
+    This is a map div. Eventually a map will go here.
+  </div>`);
 
-//loadTweets()
-
-//ajax example from tweeter
-
-// const loadTweets = function() {
-
-//   $.ajax({
-//     url: '/tweets',
-//     success: (tweets) => {
-//       renderTweet(tweets)
-
-//     },
-//     error: (err) =>  { console.log(err)}
-//   })
+  return $aMap;
+};

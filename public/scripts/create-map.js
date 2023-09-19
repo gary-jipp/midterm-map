@@ -1,46 +1,18 @@
 
+// Delete this file.  
 $(() => {
-  //call loadmaps()
-  console.log("hello")
-  const $mapsContainer = $('#maps-container');
-  console.log("logging maps container", $mapsContainer);
 
-  //initmap()
-
-  // const initmap = function(){
-    const map = new google.maps.Map($($mapsContainer)[0], {center: {lat: 50, lng: 92}, zoom: 5})
-    resetMap(map)
 
 });
+
   // $('reset').on('click', resetMap)
-console.log("after")
   // //click event to capture data from map and send to map POST route create
   // $('new-map').on('click')
 
 
-const showCreateMapForm = function(){
-  alert("showing the form")
- $('.create-map-form').removeClass("hidden")
- //$('new-map').on('click', showCreateMapForm);
-}
 
 //create new localized map
-const resetMap = function(map){
 
-  // const map = new google.maps.Map(container, {zoom: 5})
-
-  //find current location
-  navigator.geolocation.getCurrentPosition(position =>{
-    const lat = position.coords.latitude
-    const long = position.coords.longitude
-    const center = {lat: lat, lng: long}
-    map.setCenter(center)
-
-  })
-
-  return map
-
-}
 
 
 
@@ -230,6 +202,3 @@ const resetMap = function(map){
 
 
 // //send to database via post
-
-
-
